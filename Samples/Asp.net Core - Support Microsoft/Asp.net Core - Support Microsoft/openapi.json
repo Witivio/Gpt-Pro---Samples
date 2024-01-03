@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "WeatherForecast Plugin",
-    "description": "Call the support microsoft for get the WeatherForecast",
+    "title": "Microsoft Support Plugin",
+    "description": "Call the Microsoft support with a question",
     "version": "v1"
   },
   "servers": [
@@ -11,37 +11,62 @@
     }
   ],
   "paths": {
-    "/WeatherForecast": {
+    "/MicrosoftSupportQuestion": {
       "get": {
-        "operationId": "GetWeatherForecast",
-        "summary": "Get the list of WeatherForecast",
+        "operationId": "GetSupportResponse",
+        "summary": "Get the Microsoft Support response for a question give in query parameters",
+        "parameters": [
+          {
+            "name": "queryQuestion",
+            "in": "query",
+            "description": "Represents the question to ask Microsoft support in natural language as asked by the user",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WeatherForecast"
+                  "$ref": "#/components/schemas/MicrosoftSupport"
                 }
               }
             }
           }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "WeatherForecast": {
-        "type": "array",
-        "item": {
-          "date": "string",
-          "temperatureC": "int32",
-          "temperatureF": "int32",
-          "summary": "string"
-        },
-        "description": "The list of WeatherForecast."
-      },
+
+    },
+    "components": {
+      "schemas": {
+        "MicrosoftSupport": {
+          "type": "object",
+          "description": "The first response from Microsoft Support",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Support response title"
+            },
+            "LinkEncoded": {
+              "type": "string",
+              "description": "Encode link placed on the title of the response from Microsoft Support"
+            },
+            "Link": {
+              "type": "string",
+              "description": "Decoded link placed on Microsoft Support response title"
+            },
+            "Description": {
+              "type": "string",
+              "description": "Description sent by Microsoft Support"
+            },
+            "AppliesTo": {
+              "type": "string",
+              "description": "Microsoft application related to the response (may be null)"
+            }
+          }
+        }
+      }
     }
   }
 }
