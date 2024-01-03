@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Support Microsoft Plugin",
+  "name_for_model": "SupportMicrosoftPlugin",
+  "description_for_human": "Call the support microsoft for know how to add a member in a team",
+  "description_for_model": "Help the user to know how to add a member in a team",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://localhost:7061/openapi.json"
+  },
+  "logo_url": "https://example.com/logo.png",
+  "contact_email": "support@example.com",
+  "legal_info_url": "http://www.example.com/legal"
+}
