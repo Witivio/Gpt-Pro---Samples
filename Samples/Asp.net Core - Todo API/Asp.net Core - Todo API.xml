@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Asp.net Core - Todo API</name>
+    </assembly>
+    <members>
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.GetTodos">
+            <summary>
+            Returns a Todo list
+            </summary>
+            <returns>A Todo list</returns>
+        </member>
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.AddOrUpdateTodo(Asp.net_Core___Todo_API.Todo)">
+            <summary>
+            Add or update to the todo list
+            </summary>
+            <param name="todo">the todo to add or update</param>
+        </member>
+    </members>
+</doc>
