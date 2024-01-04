@@ -2,7 +2,7 @@
   "schema_version": "v1",
   "name_for_human": "Support Microsoft Plugin",
   "name_for_model": "SupportMicrosoftPlugin",
-  "description_for_human": "Call the support microsoft with a question by an user",
+  "description_for_human": "Call the Microsoft Support with a question",
   "description_for_model": "Help the user to search a response from Microsoft Support",
   "auth": {
     "type": "none"
