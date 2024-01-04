@@ -17,8 +17,8 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
         private readonly string url = "https://support.microsoft.com/search/results?query=";
         private readonly string language = "en";
 
-        [HttpGet(Name = "GetSupportResponse")]
-        public async Task<IActionResult> GetSupportResponse([FromQuery] string queryQuestion)
+        [HttpGet(Name = "GetMicrosoftSupportResponse")]
+        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string queryQuestion)
         {
             HttpClient _client = new HttpClient();
             HttpRequestMessage r = new HttpRequestMessage(HttpMethod.Get, $"{url}{queryQuestion.Replace(" ", "+")}&isEnrichedQuery=true");

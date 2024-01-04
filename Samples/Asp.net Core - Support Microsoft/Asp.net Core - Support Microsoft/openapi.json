@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Microsoft Support Plugin",
-    "description": "Call the Microsoft support with a question",
+    "description": "Returns the first response from Microsoft Support to the user when they have a question regarding one of Microsoft products",
     "version": "v1"
   },
   "servers": [
@@ -13,7 +13,7 @@
   "paths": {
     "/MicrosoftSupportQuestion": {
       "get": {
-        "operationId": "GetSupportResponse",
+        "operationId": "GetMicrosoftSupportResponse",
         "summary": "Get the Microsoft Support response for a question give in query parameters",
         "parameters": [
           {

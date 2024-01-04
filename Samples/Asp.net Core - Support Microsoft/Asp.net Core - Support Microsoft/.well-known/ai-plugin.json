@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Support Microsoft Plugin",
-  "name_for_model": "SupportMicrosoftPlugin",
-  "description_for_human": "Call the Microsoft Support with a question",
-  "description_for_model": "Help the user to search a response from Microsoft Support",
+  "name_for_human": "Microsoft Support Plugin",
+  "name_for_model": "Microsoft Support Plugin",
+  "description_for_human": "Returns the first response from Microsoft Support to the user when they have a question regarding one of Microsoft products",
+  "description_for_model": "Returns the first response from Microsoft Support to the user when they have a question regarding one of Microsoft products",
   "auth": {
     "type": "none"
   },
