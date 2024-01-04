@@ -16,5 +16,25 @@
             </summary>
             <param name="todo">the todo to add or update</param>
         </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Id">
+            <summary>
+            the identifier of the todo
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Title">
+            <summary>
+            the title of the todo
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Description">
+            <summary>
+            the description of the todo (can be null)
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.IsDone">
+            <summary>
+            Is the task completed True or false
+            </summary>
+        </member>
     </members>
 </doc>

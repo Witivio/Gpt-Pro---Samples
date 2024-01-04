@@ -7,9 +7,20 @@ builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-var app = builder.Build();
+builder.Services.AddSwaggerGen();
 
-app.UseHttpsRedirection();
+
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "sample");
+    });
+}
+
+    app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
