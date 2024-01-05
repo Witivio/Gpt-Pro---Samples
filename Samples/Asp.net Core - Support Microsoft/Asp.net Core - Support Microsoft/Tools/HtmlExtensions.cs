@@ -2,7 +2,7 @@
 
 namespace Asp.net_Core___Support_Microsoft.NewFolder
 {
-    public static class HtmlExtention
+    public static class HtmlExtensions
     {
         public static string RemoveHtmlFormatting(this string input)
         {

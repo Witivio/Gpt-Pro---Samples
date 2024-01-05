@@ -1,35 +1,62 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
-using System;
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
 using Asp.net_Core___Support_Microsoft.NewFolder;
 using Asp.net_Core___Support_Microsoft.Model;
 using System.Text;
+using StringWithQualityHeaderValue = System.Net.Http.Headers.StringWithQualityHeaderValue;
+using CacheControlHeaderValue = System.Net.Http.Headers.CacheControlHeaderValue;
 
 namespace Asp.net_Core___Support_Microsoft.Controllers
 {
+    /// <summary>
+    /// API controller containing the method of calling Microsoft Support, 
+    /// this endpoint is for calls by GPT Pro
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class MicrosoftSupportController : ControllerBase
     {
         private readonly string url = "https://support.microsoft.com/search/results?query=";
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        [HttpGet(Name = "GetMicrosoftSupportResponse")]
-        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string question, [FromQuery] string originalLanguageFromIsoCode)
+        public MicrosoftSupportController(IHttpClientFactory httpClientFactory)
         {
-            HttpClient _client = new HttpClient();
-            HttpRequestMessage r = new HttpRequestMessage(HttpMethod.Get, $"{url}{question.Replace(" ", "+")}&isEnrichedQuery=true");
-            r.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(originalLanguageFromIsoCode));
-            r.Headers.CacheControl = new CacheControlHeaderValue()
+            _httpClientFactory = httpClientFactory;
+        }
+
+        /// <summary>
+        /// GET method of calling Microsoft support, the response is processed and sent back to GPT Pro in Json format.
+        /// </summary>
+        /// <param name="originalInput">Represents the question to ask Microsoft support in natural language as asked by the user</param>
+        /// <param name="originalLanguageFromIsoCode">Represents the language used by the user for the question, the response must be in same language</param>
+        /// <returns></returns>
+        [HttpGet(Name = "GetMicrosoftSupportResponse")]
+        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string originalInput, [FromQuery] string originalLanguageFromIsoCode)
+        {
+            var _client = _httpClientFactory.CreateClient();
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"{url}{originalInput.Replace(" ", "+")}&isEnrichedQuery=true");
+
+            httpRequestMessage.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(originalLanguageFromIsoCode));
+            httpRequestMessage.Headers.CacheControl = new CacheControlHeaderValue() { NoCache = true };
+            httpRequestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+            httpRequestMessage.Headers.UserAgent.ParseAdd("PostmanRuntime/7.29.2");
+
+            var httpResponseMessage = await _client.SendAsync(httpRequestMessage);
+
+            if (httpResponseMessage.IsSuccessStatusCode)
             {
-                NoCache = true,
-            };
-            r.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
-            r.Headers.UserAgent.ParseAdd("PostmanRuntime/7.29.2");
-            var response = await _client.SendAsync(r);
-            var html = await response.Content.ReadAsStringAsync();
+                return Ok(FormatResponse(httpResponseMessage, originalLanguageFromIsoCode));
+            }
+
+            return BadRequest();
+        }
+
+        private async Task<MicrosoftSupport> FormatResponse(HttpResponseMessage httpResponseMessage, string originalLanguageFromIsoCode)
+        {
+            var html = await httpResponseMessage.Content.ReadAsStringAsync();
 
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
@@ -57,7 +84,7 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
                     };
                 });
 
-            var returnedResponse = results.Select(n => new MicrosoftSupport
+            return results.Select(n => new MicrosoftSupport
             {
                 Title = n.Title,
                 Link = n.Link,
@@ -65,9 +92,7 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
                 Description = n.Description?.Replace("\r\n", string.Empty)?.Replace("\t", string.Empty),
                 AppliesTo = n.AppliesTo,
                 IsoCodeLanguage = originalLanguageFromIsoCode
-            }).ToList();
-
-            return Ok(returnedResponse.First());
+            }).First();
         }
 
         private string Encode(string text)

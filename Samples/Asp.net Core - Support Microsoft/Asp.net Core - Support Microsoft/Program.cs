@@ -1,6 +1,4 @@
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Linq;
-using Swashbuckle.AspNetCore.SwaggerUI;
 
 public static class Program
 {
@@ -10,28 +8,8 @@ public static class Program
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        ConfigureServices(builder.Services);
-        var app = builder.Build();
-
-        Configure(app);
-
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        app.MapControllers();
-        app.Run();
-    }
-
-    public static void ConfigureServices(IServiceCollection services)
-    {
-        services.AddCors(options =>
+        builder.Services.AddHttpClient();
+        builder.Services.AddCors(options =>
         {
             options.AddPolicy("CorsPolicy",
                 builder => builder
@@ -39,34 +17,21 @@ public static class Program
                     .AllowAnyMethod()
                     .AllowAnyHeader());
         });
-        services.AddControllers();
-        services.AddSwaggerGen(swagger =>
-        {
-            swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherForecast Plugin", Version = "v1" });
-            swagger.MapType<JToken>(() => new OpenApiSchema { Type = "object" });
-        });
-    }
 
-    public static void Configure(WebApplication app)
-    {
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "MicrosoftSupport");
-                options.DocumentTitle = "MicrosoftSupport Plugin API Documentation";
-                options.DocExpansion(DocExpansion.None);
-            });
-        }
-        else
-        {
-            app.UseHsts();
-        }
+        var app = builder.Build();
+
         app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers();
         app.UseRouting();
         app.UseCors("CorsPolicy");
+        ConfigureAIEndPoints(app);
+
+        app.Run();
+    }
+
+    private static void ConfigureAIEndPoints(WebApplication app)
+    {
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
