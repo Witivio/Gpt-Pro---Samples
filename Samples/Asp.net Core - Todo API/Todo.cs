@@ -21,9 +21,7 @@
         /// Is the task completed True or false
         /// </summary>
         public bool IsDone { get; set; } 
-                                        
 
-        // Constructeur avec initialisation des propriétés
         public Todo(int id, string title, string description = "", bool isDone = false)
         {
             Id = id;

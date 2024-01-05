@@ -1,16 +1,13 @@
 using Asp.net_Core___Todo_API;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
 
-
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,10 +17,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-    app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
