@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/MicrosoftSupportQuestion": {
+    "/MicrosoftSupport": {
       "get": {
         "operationId": "GetMicrosoftSupportResponse",
         "summary": "Get the Microsoft Support response for a question give in query parameters",
         "parameters": [
           {
-            "name": "queryQuestion",
+            "name": "question",
             "in": "query",
             "description": "Represents the question to ask Microsoft support in natural language as asked by the user",
             "required": true

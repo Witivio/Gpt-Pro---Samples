@@ -54,8 +54,8 @@ public static class Program
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast");
-                options.DocumentTitle = "WeatherForecast Plugin API Documentation";
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "MicrosoftSupport");
+                options.DocumentTitle = "MicrosoftSupport Plugin API Documentation";
                 options.DocExpansion(DocExpansion.None);
             });
         }

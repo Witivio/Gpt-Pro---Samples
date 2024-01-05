@@ -9,7 +9,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://localhost:7061/openapi.json"
+    "url": "https://ab431b30cf6b.ngrok.app/openapi.json"
   },
   "logo_url": "https://example.com/logo.png",
   "contact_email": "support@example.com",

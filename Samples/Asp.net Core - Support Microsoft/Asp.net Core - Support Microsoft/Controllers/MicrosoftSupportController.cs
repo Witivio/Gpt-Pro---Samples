@@ -12,16 +12,16 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MicrosoftSupportQuestion : ControllerBase
+    public class MicrosoftSupportController : ControllerBase
     {
         private readonly string url = "https://support.microsoft.com/search/results?query=";
         private readonly string language = "en";
 
         [HttpGet(Name = "GetMicrosoftSupportResponse")]
-        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string queryQuestion)
+        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string question)
         {
             HttpClient _client = new HttpClient();
-            HttpRequestMessage r = new HttpRequestMessage(HttpMethod.Get, $"{url}{queryQuestion.Replace(" ", "+")}&isEnrichedQuery=true");
+            HttpRequestMessage r = new HttpRequestMessage(HttpMethod.Get, $"{url}{question.Replace(" ", "+")}&isEnrichedQuery=true");
             r.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(language));
             r.Headers.CacheControl = new CacheControlHeaderValue()
             {
