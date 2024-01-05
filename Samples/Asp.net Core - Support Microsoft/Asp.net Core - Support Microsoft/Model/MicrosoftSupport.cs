@@ -26,5 +26,10 @@
         /// Application in relation to the solution provided
         /// </summary>
         public string AppliesTo { get; set; }
+
+        /// <summary>
+        /// Represente the language must be use for GPT response
+        /// </summary>
+        public string IsoCodeLanguage { get; set; }
     }
 }

@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost:7061"
+      "url": "https://ab431b30cf6b.ngrok.app"
     }
   ],
   "paths": {
@@ -20,7 +20,21 @@
             "name": "question",
             "in": "query",
             "description": "Represents the question to ask Microsoft support in natural language as asked by the user",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "how can i use Microsoft Teams"
+            }
+          },
+          {
+            "name": "originalLanguageFromIsoCode",
+            "in": "query",
+            "description": "Represents the language used by the user for the question, the response must be in same language",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "en-US"
+            }
           }
         ],
         "responses": {
@@ -29,41 +43,44 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MicrosoftSupport"
+                  "$ref": "#/components/schemas/microsoftSupport"
                 }
               }
             }
           }
         }
       }
-
-    },
-    "components": {
-      "schemas": {
-        "MicrosoftSupport": {
-          "type": "object",
-          "description": "The first response from Microsoft Support",
-          "properties": {
-            "title": {
-              "type": "string",
-              "description": "Support response title"
-            },
-            "LinkEncoded": {
-              "type": "string",
-              "description": "Encode link placed on the title of the response from Microsoft Support"
-            },
-            "Link": {
-              "type": "string",
-              "description": "Decoded link placed on Microsoft Support response title"
-            },
-            "Description": {
-              "type": "string",
-              "description": "Description sent by Microsoft Support"
-            },
-            "AppliesTo": {
-              "type": "string",
-              "description": "Microsoft application related to the response (may be null)"
-            }
+    }
+  },
+  "components": {
+    "schemas": {
+      "microsoftSupport": {
+        "type": "object",
+        "description": "The first response from Microsoft Support",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Support response title"
+          },
+          "linkEncoded": {
+            "type": "string",
+            "description": "Encode link placed on the title of the response from Microsoft Support"
+          },
+          "link": {
+            "type": "string",
+            "description": "Decoded link placed on Microsoft Support response title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description sent by Microsoft Support"
+          },
+          "appliesTo": {
+            "type": "string",
+            "description": "Microsoft application related to the response (may be null)"
+          },
+          "isoCodeLanguage": {
+            "type": "string",
+            "description": "Represente the language must be use for GPT response"
           }
         }
       }

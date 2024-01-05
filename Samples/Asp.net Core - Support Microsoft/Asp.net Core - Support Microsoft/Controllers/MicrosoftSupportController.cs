@@ -15,14 +15,13 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
     public class MicrosoftSupportController : ControllerBase
     {
         private readonly string url = "https://support.microsoft.com/search/results?query=";
-        private readonly string language = "en";
 
         [HttpGet(Name = "GetMicrosoftSupportResponse")]
-        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string question)
+        public async Task<IActionResult> GetMicrosoftSupportResponse([FromQuery] string question, [FromQuery] string originalLanguageFromIsoCode)
         {
             HttpClient _client = new HttpClient();
             HttpRequestMessage r = new HttpRequestMessage(HttpMethod.Get, $"{url}{question.Replace(" ", "+")}&isEnrichedQuery=true");
-            r.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(language));
+            r.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(originalLanguageFromIsoCode));
             r.Headers.CacheControl = new CacheControlHeaderValue()
             {
                 NoCache = true,
@@ -64,7 +63,8 @@ namespace Asp.net_Core___Support_Microsoft.Controllers
                 Link = n.Link,
                 LinkEncoded = Encode(n.Link),
                 Description = n.Description?.Replace("\r\n", string.Empty)?.Replace("\t", string.Empty),
-                AppliesTo = n.AppliesTo
+                AppliesTo = n.AppliesTo,
+                IsoCodeLanguage = originalLanguageFromIsoCode
             }).ToList();
 
             return Ok(returnedResponse.First());

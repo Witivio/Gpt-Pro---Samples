@@ -13,8 +13,9 @@ public static class Program
         builder.Services.AddSwaggerGen();
 
         ConfigureServices(builder.Services);
-
         var app = builder.Build();
+
+        Configure(app);
 
         if (app.Environment.IsDevelopment())
         {
@@ -46,9 +47,9 @@ public static class Program
         });
     }
 
-    public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public static void Configure(WebApplication app)
     {
-        if (env.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
@@ -73,7 +74,9 @@ public static class Program
             endpoints.MapGet("/.well-known/ai-plugin.json", async context =>
             {
                 context.Response.ContentType = "application/json";
-                await context.Response.SendFileAsync(GetAiPluginManifestFilePath());
+                using var reader = new StreamReader(GetAiPluginManifestFilePath());
+                var json = reader.ReadToEnd();
+                await context.Response.WriteAsync(json);
             });
             // Serve OpenAPI spec
             endpoints.MapGet("/openapi.json", async context =>
@@ -95,6 +98,6 @@ public static class Program
     private static string GetAiPluginManifestFilePath()
     {
         var app = AppContext.BaseDirectory;
-        return Path.Combine(app, "ai-plugin.json");
+        return Path.Combine(app, ".well-known/ai-plugin.json");
     }
 }
