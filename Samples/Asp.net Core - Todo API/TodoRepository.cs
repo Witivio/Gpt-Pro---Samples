@@ -14,7 +14,7 @@
         {
             using (var context = new TodoContext())
             {
-                return context.Todos.ToList();
+                return context.Todos.Where(e => e.IsDone == false).ToList();
             }
         }
 

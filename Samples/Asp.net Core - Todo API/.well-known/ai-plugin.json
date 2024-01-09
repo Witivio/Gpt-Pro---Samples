@@ -9,7 +9,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://e0cb42d4f9bd.ngrok.app/openapi.json"
+    "url": "NGROK FORWARDING URL HERE/openapi.json"
   },
   "logo_url": "https://example.com/logo.png",
   "contact_email": "support@example.com",
