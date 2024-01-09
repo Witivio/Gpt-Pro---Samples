@@ -1,20 +1,20 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Microsoft Support Plugin",
-    "description": "Returns the first response from Microsoft Support to the user when they have a question regarding one of Microsoft products",
+    "title": "Todo list Plugin",
+    "description": "The 'todo list' plugin allows the user to add, read, or modify a to-do list. When the user wants to add a task to their list, they can do so by clearly stating the task. For example, they can say 'add a task...' or 'I need to do...'. ",
     "version": "v1"
   },
   "servers": [
     {
-      "url": "https://localhost:7061"
+      "url": "https://e0cb42d4f9bd.ngrok.app"
     }
   ],
   "paths": {
     "/Todo": {
       "get": {
         "operationId": "getTodos",
-        "summary": "Get the todo list",
+        "summary": "Get the todo list of the user",
         "responses": {
           "200": {
             "description": "OK",
@@ -59,38 +59,56 @@
             }
           }
         }
-      },
-      "components": {
-        "schemas": {
-          "Todo": {
-            "type": "object",
-            "description": "The first response from Microsoft Support",
-            "properties": {
-              "id": {
-                "type": "interger",
-                "description": "the identifier of the todo"
-              },
-              "Title": {
-                "type": "string",
-                "description": "the title of the todo"
-              },
-              "Description": {
-                "type": "string",
-                "description": "the description of the todo (can be null)"
-              },
-              "IsDone": {
-                "type": "boolean",
-                "description": "Is the task completed True or false"
-              }
-            }
+      }
+
+    }
+  },
+  "components": {
+    "schemas": {
+      "Todo": {
+        "type": "object",
+        "description": "Describes a task for the user to do",
+        "properties": {
+          "id": {
+            "type": "interger",
+            "description": "The identifier of the todo"
           },
-          "Todos": {
-            "type": "array",
-            "description": "a todo list",
-            "items": {
-              "schema": {
-                "$ref": "#/components/schemas/Todo"
-              }
+          "Title": {
+            "type": "string",
+            "description": "The title of the todo"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of the todo (can be null)"
+          },
+          "IsDone": {
+            "type": "boolean",
+            "description": "Is the task completed True or false"
+          }
+        }
+      },
+      "Todos": {
+        "type": "array",
+        "description": "A todo list",
+        "items": {
+          "type": "object",
+          "description": "",
+          "properties": {
+            "id": {
+              "type": "interger",
+              "description": "The identifier of the todo"
+            },
+            "Title": {
+              "type": "string",
+              "description": "The title of the todo"
+            },
+            "Description": {
+              "type": "string",
+              "description": "The description of the todo (can be null)"
+            },
+            "IsDone": {
+              "type": "boolean",
+              "description": "Is the task completed True or false"
             }
           }
         }

@@ -1,15 +1,15 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Todo list Plugin",
+  "name_for_human": "Todo-list Plugin",
   "name_for_model": "Todo list Plugin",
   "description_for_human": "Manages reading, writing and modifying a to-do list",
-  "description_for_model": "This api is used to write, read and modify a todo list",
+  "description_for_model": "The 'todo list' plugin allows the user to add, read, or modify a to-do list. When the user wants to add a task to their list, they can do so by clearly stating the task. For example, they can say 'add a task...' or 'I need to do...'.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://localhost:7061/openapi.json"
+    "url": "https://e0cb42d4f9bd.ngrok.app/openapi.json"
   },
   "logo_url": "https://example.com/logo.png",
   "contact_email": "support@example.com",
