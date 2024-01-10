@@ -96,5 +96,9 @@ Don't forget that this is a demonstration plug-in, if you close and then restart
 - To validate the description of your API, use [Swagger Validator](https://validator.swagger.io/).
 - To learn more about the Swagger Specification, visit [swagger.io](https://swagger.io/specification/).
 
-Congratulations! You have successfully launched the GPT Pro Todo List Plugin API.
-You can now begin creating custom plugins to extend the functionality of GPT Pro.
+> #### :warning: Warning
+>
+> - A plugin name can contain only ASCII letters, digits, underscores and whitespace
+
+:boom: :tada: Congratulations! You have successfully launched the GPT Pro Todo List Plugin API.
+You can now begin creating custom plugins to extend the functionality of GPT Pro. :tada: :boom:
