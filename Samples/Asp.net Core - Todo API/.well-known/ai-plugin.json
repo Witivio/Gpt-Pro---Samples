@@ -11,7 +11,7 @@
     "type": "openapi",
     "url": "NGROK FORWARDING URL HERE/openapi.json"
   },
-  "logo_url": "https://example.com/logo.png",
+  "logo_url": "NGROK FORWARDING URL HERE/plugin_Todo_icon134.png",
   "contact_email": "support@example.com",
   "legal_info_url": "http://www.example.com/legal"
 }
