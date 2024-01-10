@@ -42,4 +42,4 @@ GPT Pro will know that it needs to call the To-Do List API plugin and will call 
 
 > #### :warning: Warning
 >
-> Please note, this plugin is an example and should not be used in production as is. >The database is in memory, which is not suitable for extensive use.
+> Please note, this plugin is an example and should not be used in production as is. The database is in memory, which is not suitable for extensive use.
