@@ -1,15 +1,21 @@
 # GPT Pro: Plugin Microsoft Support
 
-### Microsoft Support
+#### What this plugin do
 
 This example contains a web API used to contact Microsoft Support (https://support.microsoft.com) and return the first response in JSON.
+
+When a GPT Pro user asks a question related to Microsoft products, the Microsoft Support plugin is activated if GPT Pro determines that it's the best solution for the user.
+GPT Pro provides the plugin with both the user's question and the language used in ISO code format. The plugin uses this information to call the Microsoft support page and process the returned web page to retrieve only the first result.
+After processing the request, the plugin sends the result back to GPT Pro in JSON format. Finally, GPT Pro formulates the response from Microsoft Support in natural language that's easy for the user to understand.
+
+![Alt text](image.png)
 
 #### How To Run This Sample in a local environment
 
 ##### Required Tools
 
 - [Visual Studio](https://visualstudio.microsoft.com/fr/downloads/)
-- We recommand to use [ngrok](https://ngrok.com/)
+- [ngrok](https://ngrok.com/) or any other tunneling too
 - [Postman](https://www.postman.com/)
 
 ##### Launch the API
@@ -29,17 +35,17 @@ Open a terminal and launch the folowing command from ngrok
 
 This will create a public URL that forwards traffic to the local port `https://localhost:7061 `. Copy the forwarding URL to use later.
 
-![Alt text](image-1.png)
+![Alt text](ReadmeImages/image-1.png)
 
 Open the file located at `/.well-known/ai-plugin.json` and `openapi.json` and update the existing json value `servers:url` and `api:url` with the ngrok forwarding url you obtained earlier"
 
 openapi.json
-![Alt text](image-6.png)
+![Alt text](ReadmeImages/image-6.png)
 ai-plugin.json
-![Alt text](image-5.png)
+![Alt text](ReadmeImages/image-5.png)
 
 Launch the api with Visual Studio, with F5 or click on :
-![Alt text](image.png)
+![Alt text](ReadmeImages/image.png)
 
 ##### Step 3: Test the API
 
@@ -57,7 +63,7 @@ Write the GET request with the base domain optained in ngrok forwarding url and 
 [yourquestion]&originalLanguageFromIsoCode=[yourlanguage]`
 
 It should look like this in postman
-![Alt text](image-3.png)
+![Alt text](ReadmeImages/image-3.png)
 
 You should see a JSON response similar to the following:
 
@@ -86,7 +92,7 @@ You should see a JSON response similar to the following:
 ##### Tips and Documentation
 
 - You can track calls to the API and debug easily with the ngrok web interface
-  ![Alt text](image-2.png)
+  ![Alt text](ReadmeImages/image-2.png)
 - To validate the description of your API, use [Swagger Validator](https://validator.swagger.io/).
 - To learn more about the Swagger Specification, visit [swagger.io](https://swagger.io/specification/).
 
