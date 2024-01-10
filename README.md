@@ -1,10 +1,12 @@
-# Gpt-Pro---Samples
+# Gpt-Pro Samples
 
 This repository contains plugin samples for GPT Pro.
 
 These samples are intended for beginner developers.
 
-Warning: These are examples intended for learning to create a GT Pro plugin, for some of them they cannot be used as is in production.
+> #### :warning: Warning
+>
+> These are examples intended for learning to create a GPT Pro plugin, for some of them they cannot be used as is in production.
 
 You are free to use them as you wish to expand the GPT Pro community.
 
@@ -38,5 +40,6 @@ GPT Pro will know that it needs to call the To-Do List API plugin and will call 
 
 ![Alt text](DiagramTodoList.png)
 
-Please note, this plugin is an example and should not be used in production as is. The database is in memory, which is not suitable for extensive use.
-on the other hand this plugin does not take into account single users and is therefore shared by all users.
+> #### :warning: Warning
+>
+> Please note, this plugin is an example and should not be used in production as is. >The database is in memory, which is not suitable for extensive use.
