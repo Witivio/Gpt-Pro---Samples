@@ -2,6 +2,8 @@
 
 This repository contains plugin samples for GPT Pro.
 
+These samples are intended for beginner developers.
+
 Warning: These are examples intended for learning to create a GT Pro plugin, for some of them they cannot be used as is in production.
 
 You are free to use them as you wish to expand the GPT Pro community.
