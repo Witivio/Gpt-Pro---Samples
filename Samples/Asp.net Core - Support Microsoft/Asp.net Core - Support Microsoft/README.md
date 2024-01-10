@@ -1,5 +1,7 @@
 # GPT Pro: Plugin Microsoft Support
 
+![Alt text](MS_Support_Plugin_icon_134.png)
+
 #### What this plugin do
 
 This example contains a web API used to contact Microsoft Support (https://support.microsoft.com) and return the first response in JSON.
