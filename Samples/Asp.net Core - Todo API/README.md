@@ -1,15 +1,34 @@
 ﻿# GPT Pro: Plugin Todo List
 
-### Todo List
+#### What this plugin do
 
-This example contains a web API used to create, read, and update a task list. tasks are stored in the in-memory database and are not separated by user. This project is an example and should not be used in production
+When a GPT Pro user wants to add a task to their to-do list, they can simply formulate it using keywords such as:
+
+- "I need to go to the hairdresser"
+- "Add to my to-do list: go shopping"
+- "Add the 10am meeting to my list"
+- "Here is my shopping list: bread, milk, butter, eggs"
+
+GPT Pro will then understand that it has to use the To-Do List API plugin and will automatically call the POST route, providing it with the necessary data. The plugin will insert the information on the given task into memory in the database.
+
+If the user wants to know what tasks they still need to do, they can ask clearly:
+
+- "What do I have left to do today?"
+- "Can you show me my list of tasks to do?"
+
+GPT Pro will know that it needs to call the To-Do List API plugin and will call the GET route to retrieve the list and transmit it to the user in natural language.
+
+![Alt text](DiagramTodoList.png)
+
+Please note, this plugin is an example and should not be used in production as is. The database is in memory, which is not suitable for extensive use.
+on the other hand this plugin does not take into account single users and is therefore shared by all users.
 
 #### How To Run This Sample in a local environment
 
 ##### Required Tools
 
 - [Visual Studio](https://visualstudio.microsoft.com/fr/downloads/)
-- We recommand to use [ngrok](https://ngrok.com/)
+- [Ngrok](https://ngrok.com/) or any other tunneling too
 - [Postman](https://www.postman.com/)
 
 ##### Launch the API
@@ -73,6 +92,7 @@ Don't forget that this is a demonstration plug-in, if you close and then restart
 ##### Tips and Documentation
 
 - You can track calls to the API and debug easily with the ngrok web interface
+  ![Alt text](image-4.png)
 - To validate the description of your API, use [Swagger Validator](https://validator.swagger.io/).
 - To learn more about the Swagger Specification, visit [swagger.io](https://swagger.io/specification/).
 

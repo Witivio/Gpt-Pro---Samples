@@ -34,7 +34,7 @@ namespace Asp.net_Core___Todo_API.Controllers
 
             var updatedTodo = _todoRepository.GetTodo(todo.Id);
 
-            if (updatedTodo == null)
+            if(todo.Id == 0 || updatedTodo == null)
             {
                 _todoRepository.CreateTodo(todo);
             }
