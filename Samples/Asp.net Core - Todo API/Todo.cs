@@ -1,4 +1,6 @@
-﻿namespace Asp.net_Core___Todo_API
+﻿using System.Text.Json.Serialization;
+
+namespace Asp.net_Core___Todo_API
 {
     public class Todo
     {
@@ -21,13 +23,5 @@
         /// Is the task completed True or false
         /// </summary>
         public bool IsDone { get; set; } 
-
-        public Todo(int id, string title, string description = "", bool isDone = false)
-        {
-            Id = id;
-            Title = title;
-            Description = description;
-            IsDone = isDone;
-        }
     }
 }

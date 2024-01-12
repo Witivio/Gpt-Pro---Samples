@@ -26,6 +26,7 @@ public static class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
+        app.UseStaticFiles();
         app.UseRouting();
         app.UseCors("CorsPolicy");
         ConfigureAIEndPoints(app);

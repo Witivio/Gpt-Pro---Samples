@@ -2,16 +2,16 @@
   "schema_version": "v1",
   "name_for_human": "Todo List Plugin",
   "name_for_model": "Todo List Plugin",
-  "description_for_human": "Manages reading, writing and modifying a to-do list",
-  "description_for_model": "The 'todo list' plugin allows the user to add, read, or modify a to-do list. When the user wants to add a task to their list, they can do so by clearly stating the task. For example 'Buy fruits and vegetables for the week', 'Reserve a table for Friday night dinner', 'Check my emails before 9am', 'Go to the doctor for my annual check-up', 'Pick up my suit from the dry cleaners', 'Buy flowers for my mother's birthday', 'Schedule an appointment with the hairdresser', 'Make a bank deposit before 3pm', 'Purchase paper and envelopes to send letters', 'Take medication precisely at 11am', 'Add a reminder for my parents' wedding anniversary', 'Learn a new skill online for 30 minutes', 'Perform a security update on my computer before working', 'Plan my next yoga session', 'Order a new computer screen online', 'Schedule an appointment with the dentist for a cleaning', 'Make a list of gift ideas for Christmas', 'Check if the cinema has tickets available for the movie I want to see', 'Remind myself to drink water every hour', 'Confirm details for my next business trip'. It has two endpoints, one to have all the tasks in the form of a list: GET method and one to update or add a task to the list: POST method.The post method takes as a parameter a Todo in JSON format in the body of the request. if the send id is 0 then it will be an addition otherwise a modification.",
+  "description_for_human": "This plugin manages a task list, being able to read, add, update and delete tasks.",
+  "description_for_model": "An interface for managing a todo list (todos), supporting CRUD operations (Create, Read, Update, Delete). Designed to interact with a RESTful API defined by an OpenAPI file, this plugin is ideal for applications requiring efficient task management.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "NGROK FORWARDING URL HERE/openapi.json"
+    "url": "https://a44d2990f681.ngrok.app/openapi.json"
   },
-  "logo_url": "NGROK FORWARDING URL HERE/plugin_Todo_icon134.png",
+  "logo_url": "https://a44d2990f681.ngrok.app/plugin_Todo_icon134.png",
   "contact_email": "support@example.com",
   "legal_info_url": "http://www.example.com/legal"
 }
