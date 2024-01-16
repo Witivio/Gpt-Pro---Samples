@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Asp.net Core - Todo API</name>
+    </assembly>
+    <members>
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.GetTodos">
+            <summary>
+            Returns a Todo list
+            </summary>
+            <returns>A Todo list</returns>
+        </member>
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.AddOrUpdateTodo(Asp.net_Core___Todo_API.Todo)">
+            <summary>
+            Add or update to the todo list
+            </summary>
+            <param name="todo">the todo to add or update</param>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Id">
+            <summary>
+            the identifier of the todo
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Title">
+            <summary>
+            the title of the todo
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.Description">
+            <summary>
+            the description of the todo (can be null)
+            </summary>
+        </member>
+        <member name="P:Asp.net_Core___Todo_API.Todo.IsDone">
+            <summary>
+            Is the task completed True or false
+            </summary>
+        </member>
+    </members>
+</doc>

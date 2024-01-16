@@ -23,7 +23,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "how can i use Microsoft Teams"
+              "example": "How can i use Microsoft Teams"
             }
           },
           {
