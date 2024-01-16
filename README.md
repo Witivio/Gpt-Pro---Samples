@@ -1,4 +1,4 @@
-# Gpt-Pro Samples
+# Gpt Pro Samples
 
 This repository contains plugin samples for GPT Pro.
 
