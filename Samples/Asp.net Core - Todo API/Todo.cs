@@ -1,27 +1,13 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Asp.net_Core___Todo_API
+﻿namespace Asp.net_Core___Todo_API
 {
     public class Todo
     {
-        /// <summary>
-        /// the identifier of the todo
-        /// </summary>
-        public int Id { get; set; }
+        public Todo(string todo)
+        {
+            this.todo = todo;
+        }
 
-        /// <summary>
-        /// the title of the todo
-        /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        /// the description of the todo (can be null)
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Is the task completed True or false
-        /// </summary>
-        public bool IsDone { get; set; } 
+        public int id { get; set; }
+        public string todo { get; set; }
     }
 }

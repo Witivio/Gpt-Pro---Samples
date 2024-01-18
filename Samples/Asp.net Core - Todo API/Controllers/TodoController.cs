@@ -20,30 +20,41 @@ namespace Asp.net_Core___Todo_API.Controllers
         [HttpGet(Name = "GetTodos")]
         public IActionResult GetTodos()
         {
-            return Ok(_todoRepository.GetTodos());
+            return Ok(_todoRepository.GetAll());
         }
 
         /// <summary>
-        /// Add or update to the todo list
+        /// Update a task to the todo list
         /// </summary>
         /// <param name="todo">the todo to add or update</param>
-        [HttpPost(Name = "AddOrUpdateTodo")]
-        public IActionResult AddOrUpdateTodo([FromBody] Todo todo)
+        [HttpPut(Name = "DeleteTodo")]
+        public IActionResult DeleteTodo([FromQuery] string todo)
         {
-            if (todo == null) return BadRequest();
+            if (string.IsNullOrEmpty(todo)) return BadRequest("the given todo is missing");
 
-            var updatedTodo = _todoRepository.GetTodo(todo.Id);
-
-            if(todo.Id == 0 || updatedTodo == null)
+            try
             {
-                _todoRepository.CreateTodo(todo);
+                _todoRepository.Delete(todo);
+                return Ok();
             }
-            else
+            catch (Exception e)
             {
-                _todoRepository.UpdateTodo(todo);
+                return BadRequest(e.Message);
             }
 
-            return Ok(todo);
+        }
+
+        /// <summary>
+        /// Add a task to the todo list
+        /// </summary>
+        /// <param name="todo">the todo to add or update</param>
+        [HttpPost(Name = "AddTodo")]
+        public IActionResult AddTodo([FromQuery] string todo)
+        {
+            if (todo == null) return BadRequest("the given todo is missing");
+
+            _todoRepository.Create(todo);
+            return Created();
         }
     }
 }

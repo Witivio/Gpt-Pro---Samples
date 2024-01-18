@@ -2,22 +2,22 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Todo List API",
-    "description": "This API manages a todo list, allowing for reading, adding, updating, and deleting tasks. It provides a clear and structured way to interact with a todo list through RESTful endpoints.",
+    "description": "A plugin that allows the user to create and manage a TODO list, you can Create(POST) with todo object in Body, Read All(GET) and Delete(PUT) with todo object in Body",
     "version": "v1"
   },
   "servers": [
     {
-      "url": "https://a44d2990f681.ngrok.app"
+      "url": "https://0124b315d895.ngrok.app"
     }
   ],
   "paths": {
     "/Todo": {
       "get": {
         "operationId": "getTodos",
-        "summary": "Retrieves the user's list of tasks",
+        "summary": "Retrieves the user's list of todo",
         "responses": {
           "200": {
-            "description": "List of tasks successfully retrieved",
+            "description": "List of todo successfully retrieved",
             "content": {
               "application/json": {
                 "schema": {
@@ -28,44 +28,22 @@
           }
         }
       },
-      "post": {
-        "operationId": "AddOrUpdateTodo",
-        "summary": "Adds or updates a task in the list",
-        "description": "To add a new task, provide an id of 0 and fill in the other details. To update an existing task, provide its id and the details to be updated. The 'title' field is required, 'description' field is required and 'isDone' field is required.",
-        "requestBody": {
-          "description": "Task data for adding or updating a task in the todo list.",
+      "put": {
+        "operationId": "DeleteTodo",
+        "summary": "Delete a task in the todo list",
+        "description": "Call DELETE endpoint for delete a todo in a list",
+        "parameters": {
+          "in": "query",
+          "name": "todo",
           "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Todo"
-              },
-              "examples": {
-                "todoToAdd": {
-                  "summary": "Example of adding a task",
-                  "value": {
-                    "id": 0,
-                    "title": "Go shopping",
-                    "description": "Buy milk, eggs, bread, and bacon",
-                    "isDone": false
-                  }
-                },
-                "todoToUpdate": {
-                  "summary": "Example of modifying a task",
-                  "value": {
-                    "id": 5,
-                    "title": "Call the dentist",
-                    "description": "Ask for a new appointment date",
-                    "isDone": true
-                  }
-                }
-              }
-            }
+          "description": "the todo description",
+          "schema": {
+            "type": "string"
           }
         },
         "responses": {
           "200": {
-            "description": "Task successfully added or updated",
+            "description": "Task successfully succefully deleted",
             "content": {
               "application/json": {
                 "schema": {
@@ -75,7 +53,27 @@
             }
           },
           "400": {
-            "description": "Bad Request - The request was invalid, often due to missing a required field or sending an incorrectly formatted field."
+            "description": "Bad Request - the todo doen't existe"
+          }
+        }
+      },
+      "post": {
+        "operationId": "addTodo",
+        "summary": "Add a todo to the list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "todo",
+            "required": true,
+            "description": "the todo description",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -84,33 +82,13 @@
   "components": {
     "schemas": {
       "Todo": {
-        "type": "object",
-        "description": "Represents a task with all its details. To add a task, set 'id' to 0 and provide 'title', 'description' and 'isDone'. To update a task, provide the 'id' (find in GET method) of the task to be updated along with all required fields (Title, description and isDone). To delete the task, provide the 'id' (find in GET method) of the task to be updated along with all required fields (Title, description) and isDone to 'false'.",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0,
-            "description": "Unique identifier of the task. Set to 0 to add a new task. This field is required"
-          },
-          "title": {
-            "type": "string",
-            "description": "Title or name of the task. This field is required."
-          },
-          "description": {
-            "type": "string",
-            "description": "Detailed description of the task. This field is required."
-          },
-          "isDone": {
-            "type": "boolean",
-            "description": "Indicates whether the task is completed (true) or not (false). This field is required."
-          }
-        },
-        "required": [ "title", "isDone", "description", "id" ]
+        "type": "string",
+        "description": "Represents a todo in a list",
+        "required": true
       },
       "Todos": {
         "type": "array",
-        "description": "List of the user's tasks",
+        "description": "List of the user's todo",
         "items": {
           "$ref": "#/components/schemas/Todo"
         }

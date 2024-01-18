@@ -1,45 +1,35 @@
-﻿namespace Asp.net_Core___Todo_API
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace Asp.net_Core___Todo_API
 {
     public class TodoRepository : ITodoRepository
     {
-        public TodoRepository()
+        public List<Todo> GetAll()
         {
             using (var context = new TodoContext())
             {
-                var a = context.Todos.ToList();
+                return context.Todos.ToList();
             }
         }
 
-        public List<Todo> GetTodos()
+        public void Create(string todo)
         {
             using (var context = new TodoContext())
             {
-                return context.Todos.Where(e => e.IsDone == false).ToList();
-            }
-        }
-
-        public Todo GetTodo(int id)
-        {
-            using (var context = new TodoContext())
-            {
-                return context.Todos.SingleOrDefault(e => e.Id == id);
-            }
-        }
-
-        public void CreateTodo(Todo todo)
-        {
-            using (var context = new TodoContext())
-            {
-                context.Todos.Add(todo);
+                context.Todos.Add(new Todo(todo));
                 context.SaveChanges();
             }
         }
 
-        public void UpdateTodo(Todo todo)
+        public void Delete(string todo)
         {
             using (var context = new TodoContext())
             {
-                context.Todos.Update(todo);
+                var todoInBase = context.Todos.SingleOrDefault(e => e.todo == todo);
+
+                if (todoInBase == null) throw new Exception("the todo don't existe in base");
+
+                context.Todos.Remove(todoInBase);
                 context.SaveChanges();
             }
         }
@@ -47,12 +37,8 @@
 
     public interface ITodoRepository
     {
-        List<Todo> GetTodos();
-
-        Todo GetTodo(int id);
-
-        void CreateTodo(Todo todo);
-
-        void UpdateTodo(Todo todo);
+        List<Todo> GetAll();
+        void Create(string todo);
+        void Delete(string todo);
     }
 }

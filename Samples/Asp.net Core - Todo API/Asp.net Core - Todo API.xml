@@ -10,31 +10,17 @@
             </summary>
             <returns>A Todo list</returns>
         </member>
-        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.AddOrUpdateTodo(Asp.net_Core___Todo_API.Todo)">
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.DeleteTodo(System.String)">
             <summary>
-            Add or update to the todo list
+            Update a task to the todo list
             </summary>
             <param name="todo">the todo to add or update</param>
         </member>
-        <member name="P:Asp.net_Core___Todo_API.Todo.Id">
+        <member name="M:Asp.net_Core___Todo_API.Controllers.TodoController.AddTodo(System.String)">
             <summary>
-            the identifier of the todo
+            Add a task to the todo list
             </summary>
-        </member>
-        <member name="P:Asp.net_Core___Todo_API.Todo.Title">
-            <summary>
-            the title of the todo
-            </summary>
-        </member>
-        <member name="P:Asp.net_Core___Todo_API.Todo.Description">
-            <summary>
-            the description of the todo (can be null)
-            </summary>
-        </member>
-        <member name="P:Asp.net_Core___Todo_API.Todo.IsDone">
-            <summary>
-            Is the task completed True or false
-            </summary>
+            <param name="todo">the todo to add or update</param>
         </member>
     </members>
 </doc>
