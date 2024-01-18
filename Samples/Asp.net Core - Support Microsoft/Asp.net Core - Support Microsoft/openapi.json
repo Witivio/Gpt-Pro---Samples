@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://c8ad8327f05b.ngrok.app"
+      "url": "NGROK FORWARDING URL HERE"
     }
   ],
   "paths": {
