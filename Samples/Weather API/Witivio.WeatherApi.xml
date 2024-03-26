@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Witivio.WeatherApi</name>
+    </assembly>
+    <members>
+        <member name="T:Witivio.WeatherApi.Controllers.WeatherForecastController">
+            <summary>
+            Controller for managing weather forecasts.
+            </summary>
+        </member>
+        <member name="M:Witivio.WeatherApi.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{Witivio.WeatherApi.Controllers.WeatherForecastController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Witivio.WeatherApi.Controllers.WeatherForecastController"/> class.
+            </summary>
+            <param name="logger">The logger used by this controller.</param>
+        </member>
+        <member name="M:Witivio.WeatherApi.Controllers.WeatherForecastController.Get">
+            <summary>
+            Gets the weather forecast for the next five days.
+            </summary>
+            <returns>A list of weather forecasts.</returns>
+        </member>
+        <member name="T:Witivio.WeatherApi.WeatherForecast">
+            <summary>
+            Represents a weather forecast.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.WeatherForecast.Date">
+            <summary>
+            Gets or sets the date of the forecast.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.WeatherForecast.TemperatureC">
+            <summary>
+            Gets or sets the temperature in Celsius.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.WeatherForecast.TemperatureF">
+            <summary>
+            Gets the temperature in Fahrenheit.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.WeatherForecast.Summary">
+            <summary>
+            Gets or sets the summary of the forecast.
+            </summary>
+        </member>
+    </members>
+</doc>
