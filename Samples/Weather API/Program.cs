@@ -1,6 +1,8 @@
 using System.Reflection;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.OpenApi.Models;
+using Witivio.WeatherApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +19,6 @@ builder.Services.AddSwaggerGen(
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         c.IncludeXmlComments(xmlPath);
-
-
     });
 
 
@@ -32,9 +32,24 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/.well-known/ai-plugin.json", async context =>
+{
+    await context.Response.WriteAsJsonAsync(new AiPlugin()
+    {
+        Api = new Api()
+        {
+            Url = $"{context.Request.Scheme}://{context.Request.Host}/swagger/v1/swagger.json",
+        },
+        NameForHuman = "Weather forecast Api",
+        NameForModel = "Weather forecast Plugin",
+        DescriptionForHuman = "Get the weather forecast",
+        DescriptionForModel = "Get the weather forecast",
+        LogoUrl = $"{context.Request.Scheme}://{context.Request.Host}/logo.webp",
+    });
+});
 
 app.Run();

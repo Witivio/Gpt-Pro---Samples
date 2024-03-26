@@ -4,6 +4,96 @@
         <name>Witivio.WeatherApi</name>
     </assembly>
     <members>
+        <member name="T:Witivio.WeatherApi.AiPlugin">
+            <summary>
+            Represents the root object of the AI plugin.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.SchemaVersion">
+            <summary>
+            Gets or sets the schema version.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.NameForHuman">
+            <summary>
+            Gets or sets the human-readable name.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.NameForModel">
+            <summary>
+            Gets or sets the model name.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.DescriptionForHuman">
+            <summary>
+            Gets or sets the human-readable description.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.DescriptionForModel">
+            <summary>
+            Gets or sets the model description.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.Auth">
+            <summary>
+            Gets or sets the authentication information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.Api">
+            <summary>
+            Gets or sets the API information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.LogoUrl">
+            <summary>
+            Gets or sets the URL of the logo.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.ContactEmail">
+            <summary>
+            Gets or sets the contact email.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.LegalInfoUrl">
+            <summary>
+            Gets or sets the URL of the legal information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.ContactInfo">
+            <summary>
+            Gets or sets the contact information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.AiPlugin.LegalInfo">
+            <summary>
+            Gets or sets the legal information.
+            </summary>
+        </member>
+        <member name="T:Witivio.WeatherApi.Auth">
+            <summary>
+            Represents the authentication information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.Auth.Type">
+            <summary>
+            Gets or sets the type of authentication.
+            </summary>
+        </member>
+        <member name="T:Witivio.WeatherApi.Api">
+            <summary>
+            Represents the API information.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.Api.Type">
+            <summary>
+            Gets or sets the type of API.
+            </summary>
+        </member>
+        <member name="P:Witivio.WeatherApi.Api.Url">
+            <summary>
+            Gets or sets the URL of the API.
+            </summary>
+        </member>
         <member name="T:Witivio.WeatherApi.Controllers.WeatherForecastController">
             <summary>
             Controller for managing weather forecasts.
@@ -43,7 +133,7 @@
         </member>
         <member name="P:Witivio.WeatherApi.WeatherForecast.Summary">
             <summary>
-            Gets or sets the summary of the forecast.
+            Gets or sets the expected weather condition.
             </summary>
         </member>
     </members>

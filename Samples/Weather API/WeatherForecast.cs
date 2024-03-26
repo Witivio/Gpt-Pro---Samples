@@ -21,7 +21,7 @@ namespace Witivio.WeatherApi
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
         /// <summary>
-        /// Gets or sets the summary of the forecast.
+        /// Gets or sets the expected weather condition.
         /// </summary>
         public string? Summary { get; set; }
     }
