@@ -32,4 +32,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\MS_Support_Plugin_icon_134.png" />
+  </ItemGroup>
+
 </Project>

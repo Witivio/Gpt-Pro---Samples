@@ -22,6 +22,7 @@ public static class Program
 
         app.UseHttpsRedirection();
         app.UseAuthorization();
+        app.UseStaticFiles();
         app.MapControllers();
         app.UseRouting();
         app.UseCors("CorsPolicy");
